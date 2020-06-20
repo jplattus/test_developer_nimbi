@@ -1,10 +1,7 @@
 <template>
-  <div class="animated fadeIn">
-    <!-- Navigation -->
-
-
+  <transition name="fade">
     <!-- Main Content -->
-    <div class="container mt-5">
+    <div v-if="!loading" class="container mt-5">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto" v-for="post in posts">
           <b-card :title="post.title">
@@ -27,7 +24,15 @@
       </div>
       <!-- Pager -->
       <div class="clearfix">
-        <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+<!--    TODO: Re-write pagination class on backend so we dont need to replace hardcoded base url -->
+        <a v-if="next_url" class="btn btn-primary float-right" href="#"
+           @click.prevent="getPosts(next_url.replace('http://127.0.0.1:8000/api/v1/post/',''))">
+          Posts antiguos <i class="fa fa-arrow-right"></i>
+        </a>
+        <a v-if="prev_url" class="btn btn-primary float-left" href="#"
+           @click.prevent="getPosts(prev_url.replace('http://127.0.0.1:8000/api/v1/post/',''))">
+          <i class="fa fa-arrow-left"></i> Posts nuevos
+        </a>
       </div>
     </div>
 
@@ -71,7 +76,7 @@
     </footer>
 
 
-  </div>
+  </transition>
 
 
 </template>
@@ -79,6 +84,7 @@
 <script>
   import {required, email} from 'vuelidate/lib/validators'
   import moment from 'moment'
+
   moment.locale('es');
 
   export default {
@@ -94,16 +100,16 @@
       }
     },
     beforeMount() {
-      this.getPosts();
+      this.getPosts('');
     },
     filters: {
       date: function (date) {
-          return moment(date).format('ll');
-        },
+        return moment(date).format('ll');
+      },
     },
     methods: {
       goToPost(slug) {
-        this.$router.push({name:"post", params:{slug: slug}})
+        this.$router.push({name: "post", params: {slug: slug}})
       },
       async onSubmit() {
         const thisV = this;
@@ -124,13 +130,13 @@
           console.log(error)
         }
       },
-      async getPosts() {
+      async getPosts(params) {
         const thisV = this;
         thisV.loading = true;
         try {
           const response = await thisV.$axios({
             method: "GET",
-            url: `api/v1/post/`,
+            url: `api/v1/post/${params}`,
           });
           thisV.posts = response.data.results;
           thisV.next_url = response.data.next;
@@ -151,3 +157,14 @@
     }
   }
 </script>
+<style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  {
+    opacity: 0;
+  }
+
+</style>
