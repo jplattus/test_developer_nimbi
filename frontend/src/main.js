@@ -11,9 +11,12 @@ import VueCookies from 'vue-cookies'
 
 Vue.use(Vuelidate);
 
+// Cookies set for user navigation records
+// We will be saving an user and a session
+// User cookie will be created when new user vitis the page
+// Session will be created everytime we visit the page, but remains when we navigate across the SPA
 Vue.use(VueCookies);
 Vue.$cookies.config('30d');
-
 const usr = Vue.$cookies.get('usr');
 const d = new Date().getTime();
 if (!usr) {

@@ -60,6 +60,7 @@
         theme: 'bootstrap4',
         template: 'default',
         options: {
+          // Todo: implement table filtering (BACKEND)
           responseAdapter: function (resp) {
             const results = resp.data.results;
             const items = [];

@@ -46,4 +46,6 @@ class PostViewSet(ModelViewSet):
         print(self.request.user)
         serializer.save(author=self.request.user)
 
+    # Todo: Handle frontend filter by overriding get_queryset method.
+
 
