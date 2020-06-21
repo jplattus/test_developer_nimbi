@@ -19,7 +19,6 @@ parts/
 sdist/
 var/
 venv/
-src/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -59,3 +58,4 @@ target/
 .idea/
 db.sqlite3
 secrets.json
+test_developer_nimbi/settings/local.py
