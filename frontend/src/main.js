@@ -7,8 +7,20 @@ import { store } from "./store/store.js";
 import axios from "axios"
 import miniToastr from 'mini-toastr'
 import Vuelidate from 'vuelidate'
+import VueCookies from 'vue-cookies'
 
 Vue.use(Vuelidate);
+
+Vue.use(VueCookies);
+Vue.$cookies.config('30d');
+
+const usr = Vue.$cookies.get('usr');
+const d = new Date().getTime();
+if (!usr) {
+  Vue.$cookies.set('usr', 'usr'+d);
+}
+Vue.$cookies.set('sess', d);
+
 
 Vue.use(BootstrapVue);
 

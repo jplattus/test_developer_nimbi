@@ -39,6 +39,19 @@
         created_on: '',
       }
     },
+    created() {
+      const data = {
+        user: this.$cookies.get('usr'),
+        session: this.$cookies.get('sess'),
+        path: this.$route.path
+      }
+      this.$axios.post('api/anal/create_navigation', data)
+        .then(function (response) {
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    },
     filters: {
       date(value) {
         return moment(value).format('ll')
@@ -66,7 +79,7 @@
         try {
           const response = await thisV.$axios({
             method: "GET",
-            url: `api/v1/post/${slug}/`,
+            url: `api/blog/post/${slug}/`,
           });
           thisV.title = response.data.title;
           thisV.content = response.data.content;
