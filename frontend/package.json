@@ -1,24 +1,9 @@
 {
-  "name": "@coreui/coreui-pro-vue-admin-template-starter",
-  "version": "2.1.5",
-  "description": "CoreUI Pro Vue Bootstrap Admin Template Starter",
+  "name": "nimbi-test",
+  "version": "1.0",
+  "description": "Nimbi Test for Jean Pierre Lattus",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
-  },
-  "contributors": [
-    {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
-    }
-  ],
-  "homepage": "http://coreui.io",
-  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:coreui/coreui-pro-vue-admin-template-starter.git"
+    "name": "Jean Pierre Lattus"
   },
   "license": "https://coreui.io/pro/license/",
   "private": true,
@@ -54,8 +39,9 @@
     "text-mask-addons": "^3.8.0",
     "v-calendar": "^0.9.7",
     "vue": "^2.6.10",
-    "vue-chartjs": "^3.4.2",
+    "vue-chartjs": "^3.5.0",
     "vue-codemirror": "^4.0.6",
+    "vue-cookies": "^1.7.0",
     "vue-grid-layout": "^2.3.4",
     "vue-mq": "^1.0.1",
     "vue-multiselect": "^2.1.6",

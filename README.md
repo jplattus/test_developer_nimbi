@@ -12,7 +12,7 @@ It's a simple blog, with basic CRUD operations that register user activity.
 
 ## Backend Prerequisites
 * python 3.6+
-* venv 
+* virtualenv 
 
 ## Some technologies and libraries used in this project
 
@@ -30,14 +30,48 @@ It's a simple blog, with basic CRUD operations that register user activity.
 * [Bootstrap-Vue](https://bootstrap-vue.org): Integration with bootstrap4 and Vue.js
 * And of course Javascript, HTML and CSS
 
+## Backend Instalation
+
+
+``` bash
+# Create a python3 virtual enviorement
+$ virtualenv -p python3 nimbi 
+
+# cd into created folder#
+$ cd nimbi
+
+# Make a directory to put the repository. Ej. src/
+$ mkdir src
+
+# clone the repo
+$ git clone https://github.com/jplattus/test_developer_nimbi.git src/
+
+# Activate virtual env and install python dependencies
+$ source bin/activate
+$ cd src/
+$ pip install -r requirements.txt
+
+### IMPORTANT ###
+# Create a postgres database and update project settings with your credentials
+# We will be using local.py settings as we didnt need productions settings
+# Setting file is in: src/test_developer_nimbi/settings/local.py
+
+# Migrate the project apps to the database and create superuser.
+$ python manage migrate
+$ python manage.py createsuperuser 
+``` 
+
+## Backend Usage
+
+Serve the backend webservices by hosting a local server
+
+`python manage.py runserver`
+
+You are good to go. Install and run the frontend to finish
+
 ## Frontend Installation
 
 ``` bash
-# clone the repo
-$ git clone https://github.com/jplattus/test_developer_nimbi.git nimbi-test
-
-# go into app's directory
-$ cd nimbi-test
 $ cd frontend
 
 # install app's dependencies
@@ -50,7 +84,9 @@ $ npm install
 # serve with hot reload at localhost:8080
 npm run serve
 
-# build for production with minification
+### At this point you can test the app on your local server. ###
+
+# (Deployment) use build for production with minification when deploying
 npm run build
 
 ```
@@ -77,9 +113,19 @@ frontend/
 └── vue.config.js                   # vue cli config
 ```
 
-## Backend Instalation ...
+## Last considerations
+I would have liked to use Google Analytics API, but the documentation is very long for the 
+short time i have to deevlop this project.
 
+Also, not proud about dashboard as it could be a lot better. I wasted a lot of time trying to understand GA API.
 
+Didnt have time test driven develop. I'm really sorry.
+
+Anyway, I really hope you like this test, and overall can be useful for you.
+
+Please contact me if you have troubles installing the app.
+
+Regards!
 
 ## Creator
 Jean Pierre Lattus

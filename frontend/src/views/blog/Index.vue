@@ -26,11 +26,11 @@
       <div class="clearfix">
 <!--    TODO: Re-write pagination class on backend so we dont need to replace hardcoded base url -->
         <a v-if="next_url" class="btn btn-primary float-right" href="#"
-           @click.prevent="getPosts(next_url.replace('http://127.0.0.1:8000/api/v1/post/',''))">
+           @click.prevent="getPosts(next_url.replace('http://127.0.0.1:8000/api/blog/post/',''))">
           Posts antiguos <i class="fa fa-arrow-right"></i>
         </a>
         <a v-if="prev_url" class="btn btn-primary float-left" href="#"
-           @click.prevent="getPosts(prev_url.replace('http://127.0.0.1:8000/api/v1/post/',''))">
+           @click.prevent="getPosts(prev_url.replace('http://127.0.0.1:8000/api/blog/post/',''))">
           <i class="fa fa-arrow-left"></i> Posts nuevos
         </a>
       </div>
@@ -99,6 +99,19 @@
         count: 0,
       }
     },
+    created() {
+      const data = {
+        user: this.$cookies.get('usr'),
+        session: this.$cookies.get('sess'),
+        path: this.$route.path
+      }
+      this.$axios.post('api/anal/create_navigation', data)
+        .then(function (response) {
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    },
     beforeMount() {
       this.getPosts('');
     },
@@ -136,7 +149,7 @@
         try {
           const response = await thisV.$axios({
             method: "GET",
-            url: `api/v1/post/${params}`,
+            url: `api/blog/post/${params}`,
           });
           thisV.posts = response.data.results;
           thisV.next_url = response.data.next;

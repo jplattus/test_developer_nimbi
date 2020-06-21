@@ -4,10 +4,11 @@
       <b-card-body>
         <h1>Post</h1>
 
-        <v-server-table url="/api/v1/post" :columns="columns" :options="options" :theme="theme" ref='table' id="dataTable">
+        <v-server-table url="/api/blog/post" :columns="columns" :options="options" :theme="theme" ref='table' id="dataTable">
           <div class="text-center" slot="actions" slot-scope="props">
-              <a target="_blank" href="#"
-                 class="fa fa-lg fa-eye text-primary"></a>&nbsp;
+              <router-link :to="{ name: 'post', params: { slug: props.row.slug }}">
+                <i class="fa fa-lg fa-eye text-primary"></i>
+              </router-link>&nbsp;
               <router-link :to="{ name: 'editar-post', params: { slug: props.row.slug }}">
                 <i class="fa fa-lg fa-edit text-primary"></i>
               </router-link>&nbsp;
@@ -59,6 +60,7 @@
         theme: 'bootstrap4',
         template: 'default',
         options: {
+          // Todo: implement table filtering (BACKEND)
           responseAdapter: function (resp) {
             const results = resp.data.results;
             const items = [];

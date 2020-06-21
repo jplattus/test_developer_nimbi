@@ -124,7 +124,7 @@
         try {
           const response = await thisV.$axios({
             method: "POST",
-            url: 'api/v1/post/',
+            url: 'api/blog/post/',
             data: {
               content: thisV.form.content,
               title: thisV.form.title,
@@ -148,7 +148,7 @@
         try {
           const response = await thisV.$axios({
             method: "PUT",
-            url: `api/v1/post/${slug}/`,
+            url: `api/blog/post/${slug}/`,
             data: {
               content: thisV.form.content,
               title: thisV.form.title,
@@ -193,7 +193,7 @@
         try {
           const response = await thisV.$axios({
             method: "DELETE",
-            url: `api/v1/post/${slug}/`,
+            url: `api/blog/post/${slug}/`,
           });
           thisV.$toast.success('Post borrado con éxito', "");
           thisV.$router.push({name: 'lista-post'});
@@ -209,7 +209,7 @@
         try {
           const response = await thisV.$axios({
             method: "GET",
-            url: `api/v1/post/${slug}/`,
+            url: `api/blog/post/${slug}/`,
           });
           thisV.$toast.success('Post cargado con éxito', "");
           thisV.form.title = response.data.title;

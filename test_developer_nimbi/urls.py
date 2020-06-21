@@ -19,6 +19,7 @@ from blog.views import rest_auth
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('blog.urls')),
+    path('api/blog/', include('blog.urls')),
+    path('api/anal/', include('analytics.urls')),
     path('rest_auth/', rest_auth),
 ]
