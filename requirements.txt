@@ -4,7 +4,7 @@ coverage==5.1
 Django==3.0.7
 django-cors-headers==3.4.0
 django-mock-queries==2.1.5
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 importlib-metadata==1.6.1
 mock==4.0.2
 model-bakery==1.0.2
